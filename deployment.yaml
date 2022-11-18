@@ -1,16 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: flask-node-deployment
+  name: flask-node-service
 spec:
   selector:
-    app: flasknode
+    app: flask-node-deployment
   ports:
-  - name: http
-    protocol: TCP
-    port: 80
+  - port: 80
     targetPort: 7777
-  type: LoadBalancer
+    nodePort: 31000
+  type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
